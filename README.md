@@ -40,7 +40,7 @@ pip install matplotlib
 ```
 
 ## Screenshots
-<p align="center"><img width="80%" src="https://github.com/alexlostorto/Statistics/raw/main/git_images/four_point_moving_averages.PNG" alt="four point moving averages displayed on a graph using matplotlib" /></p>
+<p align="center"><img width="80%" src="https://github.com/alexlostorto/Statistics/raw/main/git_images/four_point_moving_averages.png" alt="four point moving averages displayed on a graph using matplotlib" /></p>
 
 ## Credits 
 
