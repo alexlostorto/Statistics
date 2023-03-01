@@ -27,5 +27,13 @@ def standardDeviation(dataset=[], log=False):
     return ((xSumSquared/n)-((xSum/n)**2))**(1/2)
 
 
+def skewness(mean, median, standardDeviation, log=True):
+    if log:
+        print((3 * (mean - median)) / standardDeviation)
+
+    return (3 * (mean - median)) / standardDeviation
+
+
 if __name__ == '__main__':
     standardDeviation("2 3 3 4 5 6", True)
+    skewness(10, 5, 5, True)
