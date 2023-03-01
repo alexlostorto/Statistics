@@ -1,5 +1,7 @@
-def parseList(item):
+def parseList(item, log=True):
     if isinstance(item, list):
+        if log:
+            print(item)
         return item
     elif isinstance(item, str):
         item = item.replace('  ', ' ')
@@ -7,6 +9,8 @@ def parseList(item):
             item = item.split(', ')
         else:
             item = item.split(' ')
+        if log:
+            print(item)
         return item
 
 
@@ -34,6 +38,8 @@ def skewness(mean, median, standardDeviation, log=True):
     return (3 * (mean - median)) / standardDeviation
 
 
-if __name__ == '__main__':
-    standardDeviation("2 3 3 4 5 6", True)
-    skewness(10, 5, 5, True)
+__all__ = [
+    parseList,
+    standardDeviation,
+    skewness
+]
