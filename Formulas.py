@@ -33,7 +33,7 @@ def mean(dataset=[], roundto=3, log=True):
     dataset = parseList(dataset, log=False)
 
     if log:
-        print(round(sum(dataset) / len(dataset), roundto))
+        print(f"Mean: {round(sum(dataset) / len(dataset), roundto)}")
 
     return round(sum(dataset) / len(dataset), roundto)
 
@@ -50,7 +50,7 @@ def median(dataset=[], roundto=3, log=True):
                   dataset[math.floor(middle)-1]) / 2
 
     if log:
-        print(round(median, roundto))
+        print(f"Median: {round(median, roundto)}")
 
     return round(median, roundto)
 
@@ -67,7 +67,7 @@ def standardDeviation(dataset=[], roundto=3, log=True):
         xSumSquared += int(x)**2
 
     if log:
-        print(((xSumSquared/n)-((xSum/n)**2))**(1/2))
+        print(f"Standard deviation: {((xSumSquared/n)-((xSum/n)**2))**(1/2)}")
 
     return ((xSumSquared/n)-((xSum/n)**2))**(1/2)
 
@@ -76,8 +76,7 @@ def skewness(dataset=[], roundto=3, log=True):
     dataset = parseList(dataset)
 
     if log:
-        print(round((3 * (mean(dataset, 5) - median(dataset, 5))) /
-              standardDeviation(dataset, 5)), roundto)
+        print(f"Skewness: {round((3 * (mean(dataset, 5) - median(dataset, 5))) / standardDeviation(dataset, 5), roundto)}")
 
     return round((3 * (mean(dataset, 5) - median(dataset, 5))) / standardDeviation(dataset, 5), roundto)
 
