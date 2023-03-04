@@ -23,7 +23,7 @@ def main():
 
     def formatParam(paramName, parameters, param):
         if paramName == '':
-            parameters.append(param)
+            parameters[0].append(param)
         else:
             parameters[1][paramName] = param
         return parameters
