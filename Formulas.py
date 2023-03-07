@@ -122,11 +122,35 @@ def spearmansRank(dataset1=[], dataset2=[], roundto=3, log=True):
     return round(1-((6*sumDifSquared)/(len(dataset1)*(len(dataset1)**2-1))), roundto)
 
 
+def pascal(rowNumber, log=True):
+    row = []
+
+    for i in range(rowNumber):
+        newRow = []
+        for l in range(len(row) - 1):
+            newRow.append(row[l] + row[l+1])
+        row = [1, *newRow, 1]
+
+    if log:
+        print(f"Row {rowNumber}: {' '.join(str(i) for i in row)}")
+
+    return row
+
+
+def nCr(before, after, log=True):
+    if log:
+        print(f"Coefficient: {pascal(before, False)[after]}")
+
+    return pascal(before, False)[after]
+
+
 __all__ = [
     parseList,
     mean,
     median,
     standardDeviation,
     skewness,
-    spearmansRank
+    spearmansRank,
+    pascal,
+    nCr
 ]
