@@ -40,6 +40,19 @@ def mean(dataset=[], roundto=3, log=True):
     return round(sum(dataset)/len(dataset), roundto)
 
 
+def geometricMean(dataset=[], roundto=3, log=True):
+    dataset = parseList(dataset, log=False)
+
+    product = 1
+    for data in dataset:
+        product *= data
+
+    if log:
+        print(f"Geometric mean: {round(product ** (1 / len(dataset)), roundto)}")
+
+    return round(product ** (1 / len(dataset)), roundto)
+
+
 def median(dataset=[], roundto=3, log=True):
     dataset = parseList(dataset, log=False)
     dataset.sort()
@@ -147,6 +160,7 @@ def nCr(before, after, log=True):
 __all__ = [
     parseList,
     mean,
+    geometricMean,
     median,
     standardDeviation,
     skewness,
