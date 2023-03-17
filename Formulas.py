@@ -157,6 +157,13 @@ def nCr(before, after, log=True):
     return pascal(before, False)[after]
 
 
+def compoundInterest(base, multiplier, years, roundto=3, log=True):
+    if log:
+        print(f"Value after {years} years: {round(base * multiplier ** years, roundto)}")
+
+    return round(base * multiplier ** years, roundto)
+
+
 __all__ = [
     parseList,
     mean,
@@ -166,5 +173,6 @@ __all__ = [
     skewness,
     spearmansRank,
     pascal,
-    nCr
+    nCr,
+    compoundInterest
 ]
