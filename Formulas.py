@@ -150,11 +150,30 @@ def pascal(rowNumber, log=True):
     return row
 
 
-def nCr(before, after, log=True):
-    if log:
-        print(f"Coefficient: {pascal(before, False)[after]}")
+def nCr(before, after, version=2, log=True):
+    if version == 1:
+        if log:
+            print(f"Coefficient: {pascal(before, False)[after]}")
 
-    return pascal(before, False)[after]
+        return pascal(before, False)[after]
+
+    else:
+        if log:
+            print(f"Coefficient: {int(factorial(before, False) / (factorial(after, False) * factorial(before - after, False)))}")
+
+        return int(factorial(before, False) / (factorial(after, False) * factorial(before - after, False)))
+
+
+def factorial(integer, log=True):
+    x = 1
+    while integer > 1:
+        x *= integer
+        integer -= 1
+
+    if log:
+        print(f"Value: {x}")
+
+    return x
 
 
 def compoundInterest(base, multiplier, years, roundto=3, log=True):
@@ -174,5 +193,6 @@ __all__ = [
     spearmansRank,
     pascal,
     nCr,
+    factorial,
     compoundInterest
 ]
