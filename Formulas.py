@@ -176,11 +176,18 @@ def factorial(integer, log=True):
     return x
 
 
-def compoundInterest(base, multiplier, years, roundto=3, log=True):
+def compoundInterest(base, multiplier, years, roundto=2, log=True):
     if log:
-        print(f"Value after {years} years: {round(base * multiplier ** years, roundto)}")
+        print(f"Value after {years} years: {round(base * multiplier ** years, roundto):,}")
 
     return round(base * multiplier ** years, roundto)
+
+
+def simpleInterest(base, multiplier, years, roundto=2, log=True):
+    if log:
+        print(f"Value after {years} years: {round(base + base * (multiplier - 1) * years, roundto):,}")
+
+    return round(base + base * (multiplier - 1) * years, roundto)
 
 
 __all__ = [
@@ -194,5 +201,6 @@ __all__ = [
     pascal,
     nCr,
     factorial,
-    compoundInterest
+    compoundInterest,
+    simpleInterest
 ]
