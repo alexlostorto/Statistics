@@ -1,6 +1,6 @@
 <h1 align="center">Statistics</h1>
 
-This repository contains different statistics programs and Formulas.py which holds all types of statistics formulae.
+This repository contains different **statistics** programs and **Formulas.py** which holds all types of **statistical formulae**.
 
 ## Table of Contents
 
