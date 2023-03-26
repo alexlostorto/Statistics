@@ -17,6 +17,7 @@ This repository contains different **statistics** programs and **Formulas.py** w
   * [Median](#mediandataset-roundto3-logtrue)
   * [Standard Deviation](#standarddeviationdataset-roundto3-logtrue)
   * [Skewness](#skewnessdataset-roundto3-logtrue)
+  * [Spearmans Rank](#spearmansrankdataset1-dataset2-roundto3-logtrue)
 - [Credits](#credits)
 </details>
 
@@ -118,10 +119,52 @@ return ((xSumSquared/n)-((xSum/n)**2))**(1/2)
 
 #### skewness(dataset=[], roundto=3, log=True):
 
-1. The skewness is calculated using the formula. The function takes a list of numbers as an input.
+1. Skewness is calculated using the formula. The function takes a list of numbers as an input.
 
 ```python
 return round((3*(mean(dataset, 5)-median(dataset, 5)))/standardDeviation(dataset, 5), roundto)
+```
+
+#### spearmansRank(dataset1=[], dataset2=[], roundto=3, log=True):
+
+1. Spearmans rank correlation coefficient is calculated using the formula. The function takes two lists of numbers as an input. Firstly, both datasets are ranked.
+
+```python
+# CREDIT: THIS CODE WAS TAKEN FROM STACKOVERFLOW
+def rank_simple(vector):
+    return sorted(range(len(vector)), key=vector.__getitem__)
+
+def rankdata(a):
+    n = len(a)
+    ivec = rank_simple(a)
+    svec = [a[rank] for rank in ivec]
+    sumranks = 0
+    dupcount = 0
+    newarray = [0]*n
+    for i in range(n):
+        sumranks += i
+        dupcount += 1
+        if i == n-1 or svec[i] != svec[i+1]:
+            averank = sumranks / float(dupcount) + 1
+            for j in range(i-dupcount+1, i+1):
+                newarray[ivec[j]] = averank
+            sumranks = 0
+            dupcount = 0
+    return newarray
+```
+
+2. Then, I iterate through one list and find the difference squared for each data pair - I add this to the sumDifSquared total.
+
+```python
+sumDifSquared = 0
+for i in range(len(ranked1)):
+    sumDifSquared += abs(ranked1[i]-ranked2[i])**2
+```
+
+3. I substitute the relevant values into the spearmans rank correlation coefficient formula and return the output.
+
+```python
+return round(1-((6*sumDifSquared)/(len(dataset1)*(len(dataset1)**2-1))), roundto)
 ```
 
 ## Credits
