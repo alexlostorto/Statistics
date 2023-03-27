@@ -18,11 +18,11 @@ This repository contains different **statistics** programs and **Formulas.py** w
   * [Standard Deviation](#standarddeviationdataset-roundto3-logtrue)
   * [Skewness](#skewnessdataset-roundto3-logtrue)
   * [Spearmans Rank](#spearmansrankdataset1-dataset2-roundto3-logtrue)
-  * [Pascal's Triangle](#spearmansrankdataset1-dataset2-roundto3-logtrue)
-  * [nCr](#spearmansrankdataset1-dataset2-roundto3-logtrue)
-  * [Factorial](#spearmansrankdataset1-dataset2-roundto3-logtrue)
-  * [Compound Interest](#spearmansrankdataset1-dataset2-roundto3-logtrue)
-  * [Simple Interest](#spearmansrankdataset1-dataset2-roundto3-logtrue)
+  * [Pascal's Triangle](#pascalrownumber-logtrue)
+  * [nCr](#ncrbefore-after-version2-logtrue)
+  * [Factorial](#factorialinteger-logtrue)
+  * [Compound Interest](#compoundinterestbase-multiplier-years-roundto2-logtrue)
+  * [Simple Interest](#simpleinterestbase-multiplier-years-roundto2-logtrue)
 - [Credits](#credits)
 </details>
 
