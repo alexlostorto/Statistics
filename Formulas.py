@@ -150,8 +150,8 @@ def pascal(rowNumber, log=True):
     return row
 
 
-def nCr(before, after, version=2, log=True):
-    if version == 1:
+def nCr(before, after, method=2, log=True):
+    if method == 1:
         if log:
             print(f"Coefficient: {pascal(before, False)[after]}")
 
