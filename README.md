@@ -18,6 +18,11 @@ This repository contains different **statistics** programs and **Formulas.py** w
   * [Standard Deviation](#standarddeviationdataset-roundto3-logtrue)
   * [Skewness](#skewnessdataset-roundto3-logtrue)
   * [Spearmans Rank](#spearmansrankdataset1-dataset2-roundto3-logtrue)
+  * [Pascal's Triangle](#spearmansrankdataset1-dataset2-roundto3-logtrue)
+  * [nCr](#spearmansrankdataset1-dataset2-roundto3-logtrue)
+  * [Factorial](#spearmansrankdataset1-dataset2-roundto3-logtrue)
+  * [Compound Interest](#spearmansrankdataset1-dataset2-roundto3-logtrue)
+  * [Simple Interest](#spearmansrankdataset1-dataset2-roundto3-logtrue)
 - [Credits](#credits)
 </details>
 
@@ -34,31 +39,31 @@ pip install matplotlib
 1. The formula for calculating four point moving averages: Q1 + Q2 + Q3 + Q4 (Q for a yearly quarter). The formula is used to calculate all the moving averages and create 2 lists. One for the x values, one for the y values (the four point moving average).
 
 ```python
-    def getAverages():
-        if len(x) == len(y) and len(x) >= 4:
-            counter = 4
-            x2 = []
-            y2 = []
-            while counter <= len(x):
-                average = (y[counter-4] + y[counter-3] + y[counter-2] + y[counter-1]) / 4
-                xValue = (x[counter-3] + x[counter-2]) / 2
-                x2.append(xValue)
-                y2.append(average)
+def getAverages():
+    if len(x) == len(y) and len(x) >= 4:
+        counter = 4
+        x2 = []
+        y2 = []
+        while counter <= len(x):
+            average = (y[counter-4] + y[counter-3] + y[counter-2] + y[counter-1]) / 4
+            xValue = (x[counter-3] + x[counter-2]) / 2
+            x2.append(xValue)
+            y2.append(average)
 
-                counter += 1
-        else:
-            print("Not enough values or amount isn't equal")
+            counter += 1
+    else:
+        print("Not enough values or amount isn't equal")
 
-        return x2, y2
+    return x2, y2
 
-    x2, y2 = getAverages()
+x2, y2 = getAverages()
 ```
 
 2. The coordinate for each four point moving average is printed.
 
 ```python
-    for i in range(len(x2)):
-        print(f"{x2[i]}, {y2[i]}")
+for i in range(len(x2)):
+    print(f"{x2[i]}, {y2[i]}")
 ```
 
 #### Screenshots
@@ -165,6 +170,61 @@ for i in range(len(ranked1)):
 
 ```python
 return round(1-((6*sumDifSquared)/(len(dataset1)*(len(dataset1)**2-1))), roundto)
+```
+
+#### pascal(rowNumber, log=True):
+
+1. Manually creates each line of Pascal's triangle until the desired row is reached. This function takes the row numbe as an input.
+
+```python
+row = []
+
+for i in range(rowNumber):
+    newRow = []
+    for l in range(len(row) - 1):
+        newRow.append(row[l] + row[l+1])
+    row = [1, *newRow, 1]
+```
+
+#### nCr(before, after, version=2, log=True):
+
+**Method 1:** This method uses the pascal() function previously created and returns the relevant index of that row. This function takes the values before and after the nCr function as inputs.
+
+```python
+return pascal(before, False)[after]
+```
+
+**Method 2:** This method uses the factorial() function to substitute the values before and after into the nCr formula. This function takes the values before and after the nCr function as inputs.
+
+```python
+return int(factorial(before, False) / (factorial(after, False) * factorial(before - after, False)))
+```
+
+#### factorial(integer, log=True):
+
+1. Multiply the input by each integer below it. Only takes a positive integer input.
+
+```python
+x = 1
+while integer > 1:
+    x *= integer
+    integer -= 1
+```
+
+#### compoundInterest(base, multiplier, years, roundto=2, log=True):
+
+1. Calculates the compund interest. The function takes the base value, the multiplier, and then number of years as inputs.
+
+```python
+return round(base * multiplier ** years, roundto)
+```
+
+#### simpleInterest(base, multiplier, years, roundto=2, log=True):
+
+1. Calculates the simple interest. The function takes the base value, the multiplier, and then number of years as inputs.
+
+```python
+return round(base + base * (multiplier - 1) * years, roundto)
 ```
 
 ## Credits
